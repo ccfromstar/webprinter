@@ -1,0 +1,66 @@
+<html>
+   <head>
+      <title>我的第一个打印文档</title>
+      <!-- 插入打印控件 -->
+      <OBJECT  ID="jatoolsPrinter" CLASSID="CLSID:B43D3361-D075-4BE2-87FE-057188254255"
+                  codebase="jatoolsPrinter.cab#version=8,6,0,0"></OBJECT>  
+      <script>
+        function doPrint() {
+            myDoc = {
+                settings:{
+                  topMargin:100,
+                  leftMargin:20,
+                  bottomMargin:100,
+                  rightMargin:20
+                },
+                documents: document,
+                /*
+                 要打印的div 对象在本文档中，控件将从本文档中的 id 为 'page1' 的div对象，
+                 作为首页打印id 为'page2'的作为第二页打印            */
+                copyrights: '杰创软件拥有版权  www.jatools.com' // 版权声明,必须   
+            };
+            document.getElementById("jatoolsPrinter").print(myDoc, false); // 直接打印，不弹出打印机设置对话框 
+        }
+      </script>
+      <style>
+          .menu th{
+              text-align: left;
+          }
+      </style>
+   </head>
+   <body>
+      <div id='page1'  style='width:250px;text-align: center;'>
+          <h3>外卖侠取餐小票</h3>
+          <table class='menu' style='width:250px;'>
+            <thead>
+              <tr>
+                <th>菜名</th>
+                <th>数量</th>
+                <th>单价</th>
+              </tr>
+            </thead>
+            <tbody id = 'temp_cart'>
+                <tr>
+                  <td>番茄炒蛋盖浇饭</td>
+                  <td>2</td>
+                  <td>¥0.01</td>
+                </tr>
+                <tr>
+                  <td>海带</td>
+                  <td>2</td>
+                  <td>¥0.01</td>
+                </tr>
+                <tr>
+                  <td>冰红茶</td>
+                  <td>1</td>
+                  <td>¥0.01</td>
+                </tr>
+            </tbody>
+          </table>
+          <p>应付金额为：¥0.05</p>
+          <p>取餐二维码为：</p>
+          <img src="1.png" style="width:100px" alt="">
+      </div>
+      <input type="button" value="打印"   onClick=' doPrint()'> 
+   </body>
+</html>
